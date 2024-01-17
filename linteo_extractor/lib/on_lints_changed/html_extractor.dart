@@ -15,6 +15,7 @@ class HtmlExtractor extends RulesExtractor {
     const startCodeTag = '<code>';
     const endCodeTag = '</code>';
 
+    print(input);
     final startIndex = input.indexOf(startCodeTag) + startCodeTag.length;
     final endIndex = input.indexOf(endCodeTag);
 
