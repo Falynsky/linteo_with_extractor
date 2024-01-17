@@ -1,0 +1,67 @@
+name: On Lints Changed
+
+on:
+  push:
+    branches: ["main"]
+
+# on:
+#   schedule:
+#     - cron:  '0 6 * * *'
+
+jobs:
+  create_pull_request:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Assign randomized env variable in case of more daily commits
+        id: vars
+        run: |
+          SEED=$RANDOM
+          CURRENT_DATE=$(date +%Y_%m_%d)
+          BRANCH_NAME="feature/lints_${CURRENT_DATE}_$SEED"
+
+          echo "BRANCH_NAME=$BRANCH_NAME" >> $GITHUB_OUTPUT
+
+      - uses: actions/checkout@v3
+      - uses: dart-lang/setup-dart@9a04e6d73cca37bd455e0608d7e5092f881fd603
+      - name: Install dependencies & Run tests
+        run: |
+          dart pub get
+          cd linteo_extractor
+          dart pub get
+          dart test
+
+      - name: Run program
+        run: dart run linteo_extractor/bin/on_lints_changed.dart "${{ github.workspace }}"
+
+      - name: Check file existence
+        id: check_output_existence
+        uses: andstor/file-existence-action@v2
+        with:
+          files: "new_lints.tmp"
+
+      - name: Add lints to project
+        if: steps.check_output_existence.outputs.files_exists == 'true'
+        run: |
+          git config user.email "pusz.lukasz@gmail.com"
+          git config user.name "Łukasz Pusz"
+          git status
+
+          git checkout -b "${{ steps.vars.outputs.BRANCH_NAME }}"
+          git add "lib/all_lint_rules.yaml"
+
+          git commit -m "Update lib/all_lint_rules.yaml"
+          git push origin "${{ steps.vars.outputs.BRANCH_NAME }}"
+
+      - name: Create Pull Request
+        if: steps.check_output_existence.outputs.files_exists == 'true'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          file_contents=$(cat new_lints.tmp)
+          gh pr create \
+          -B main \
+          -H ${{ steps.vars.outputs.BRANCH_NAME }} \
+          --title "${{ steps.vars.outputs.BRANCH_NAME }}" \
+          --body "Please select, which new rules you wish to disable:
+            $file_contents"
