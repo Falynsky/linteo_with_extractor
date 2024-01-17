@@ -12,7 +12,7 @@ class HtmlExtractor extends RulesExtractor {
   }
 
   String getRawBody() {
-    const startCodeTag = '<code>';
+    const startCodeTag = '<code class="yaml prettyprint lang-yaml">';
     const endCodeTag = '</code>';
 
     print(input);
