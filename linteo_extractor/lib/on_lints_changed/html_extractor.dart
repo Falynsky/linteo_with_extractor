@@ -6,15 +6,16 @@ class HtmlExtractor extends RulesExtractor {
   @override
   String getBody() {
     return getRawBody()
-        .replaceAll('linter:', '')
         .replaceAll('rules:', '')
+        .replaceAll('linter:', '')
         .trim();
   }
 
   String getRawBody() {
-    const startCodeTag = '<code>';
-    const endCodeTag = '</code>';
+    const startCodeTag = '<code class="yaml prettyprint lang-yaml">';
+    const endCodeTag = '</code></pre></div>';
 
+    print(input);
     final startIndex = input.indexOf(startCodeTag) + startCodeTag.length;
     final endIndex = input.indexOf(endCodeTag);
 

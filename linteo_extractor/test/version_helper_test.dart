@@ -5,12 +5,12 @@ import 'fixtures/fixture_reader.dart';
 
 void main() {
   test('Should return correct version', () {
-    const input = 'include: package:linteo/analysis_options.1.1.0.yaml';
+    const input = 'include: package:linteo/analysis_options.1.3.0.yaml';
     const helper = VersionHelper('..');
 
     final result = helper.getAnalysisOptionsVersion(input);
 
-    expect(result, '1.1.0');
+    expect(result, '1.3.0');
   });
 
   test('Should return incremented version', () {
@@ -19,6 +19,6 @@ void main() {
 
     final result = helper.getIncrementedVersion(text);
 
-    expect(result, '1.2.0');
+    expect(result, '1.4.0');
   });
 }
