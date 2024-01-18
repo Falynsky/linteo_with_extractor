@@ -7,7 +7,7 @@ void main() {
   test('Test getPubspecWithUpdatedVersion', () {
     final input = fixture('input_pubspec.yaml');
     const version = '33.44.55';
-    final expected = input.replaceAll('version: 1.1.0', 'version: $version');
+    final expected = input.replaceAll('version: 1.3.0', 'version: $version');
     const updater = PubspecUpdater();
 
     final result = updater.getPubspecWithUpdatedVersion(input, version);

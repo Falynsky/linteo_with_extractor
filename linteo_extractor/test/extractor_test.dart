@@ -18,12 +18,12 @@ void main() {
 
     test('Should return correct lints count', () {
       final result = extractor.lintsCount;
-      expect(result, 214);
+      expect(result, 223);
     });
 
     test('Should return correct lints md5', () {
       final result = extractor.getLintsHash();
-      expect(result, '41e4a210a40d5aa3f8364cf33b19ef67');
+      expect(result, 'c2fe51eff0ae6fb1ee48c6d1fa7d6654');
     });
   });
 
@@ -35,12 +35,12 @@ void main() {
 
     test('Should return correct lints count', () {
       final result = extractor.lintsCount;
-      expect(result, 214);
+      expect(result, 223);
     });
 
     test('Should return correct lints md5', () {
       final result = extractor.getLintsHash();
-      expect(result, '41e4a210a40d5aa3f8364cf33b19ef67');
+      expect(result, 'c2fe51eff0ae6fb1ee48c6d1fa7d6654');
     });
   });
 
