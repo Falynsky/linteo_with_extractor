@@ -7,7 +7,7 @@ class RulesAppender {
     final buffer = StringBuffer();
     buffer.writeln(currentRawRulesFile);
     buffer.writeln();
-
+    print(rules.toString());
     for (final rule in rules) {
       buffer.writeln('    # $pullRequestUrl');
       buffer.writeln('    $rule: false');
