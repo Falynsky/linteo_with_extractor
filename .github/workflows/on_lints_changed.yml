@@ -61,7 +61,7 @@ jobs:
           new_lints_file_contents=$(cat new_lints.tmp)
           deleted_lints_file_contents=$(cat deleted_lints.tmp)
           pr_body="This rules was deleted: 
-            $deleted_lints_file_contents"
+            $deleted_lints_file_contents
           Please unselect, which new rules you wish to disable: 
             $new_lints_file_contents"
           gh pr create \
