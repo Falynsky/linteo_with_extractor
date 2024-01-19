@@ -130,6 +130,23 @@ linter:
     - prefer_contains
     - prefer_double_quotes
     - prefer_expression_function_bodies
+    - prefer_final_fields
+    - prefer_final_in_for_each
+    - prefer_final_locals
+    - prefer_final_parameters
+    - prefer_for_elements_to_map_fromIterable
+    - prefer_foreach
+    - prefer_function_declarations_over_variables
+    - prefer_generic_function_type_aliases
+    - prefer_if_elements_to_conditional_expressions
+    - prefer_if_null_operators
+    - prefer_initializing_formals
+    - prefer_inlined_adds
+    - prefer_int_literals
+    - prefer_interpolation_to_compose_strings
+    - prefer_is_empty
+    - prefer_is_not_empty
+    - prefer_is_not_operator
     - prefer_iterable_whereType
     - prefer_mixin
     - prefer_null_aware_method_calls
