@@ -19,12 +19,29 @@ linter:
     - avoid_equals_and_hash_code_on_mutable_classes
     - avoid_escaping_inner_quotes
     - avoid_field_initializers_in_const_classes
+    - avoid_final_parameters
+    - avoid_function_literals_in_foreach_calls
+    - avoid_implementing_value_types
+    - avoid_init_to_null
+    - avoid_js_rounded_ints
+    - avoid_multiple_declarations_per_line
+    - avoid_null_checks_in_equality_operators
+    - avoid_positional_boolean_parameters
+    - avoid_print
+    - avoid_private_typedef_functions
+    - avoid_redundant_argument_values
+    - avoid_relative_lib_imports
+    - avoid_renaming_method_parameters
+    - avoid_return_types_on_setters
+    - avoid_returning_null
+    - avoid_returning_null_for_future
+    - avoid_returning_null_for_void
+    - avoid_returning_this
     - avoid_setters_without_getters
     - avoid_shadowing_type_parameters
     - avoid_single_cascade_in_expression_statements
     - avoid_slow_async_io
     - avoid_type_to_string
-    - test_fake
     - avoid_types_as_parameter_names
     - avoid_types_on_closure_parameters
     - avoid_unnecessary_containers
