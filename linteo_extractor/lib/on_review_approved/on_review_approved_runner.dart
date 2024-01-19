@@ -30,7 +30,7 @@ class OnReviewApprovedRunner extends ActionRunner {
     pubspecWriter.write(version);
 
     // ignore: avoid_print
-    print(version);
+    print('test');
   }
 
   void _tryUpdateVersionedFile({
