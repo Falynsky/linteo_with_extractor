@@ -60,11 +60,21 @@ jobs:
         run: |
           new_lints_file_contents=$(cat new_lints.tmp)
           deleted_lints_file_contents=$(cat deleted_lints.tmp)
-          pr_body="This rules was deleted: 
-          $deleted_lints_file_contents
-
-          Please unselect, which new rules you wish to disable: 
-          $new_lints_file_contents"
+          if [[ -z "$new_lints_file_contents" && -n "$deleted_lints_file_contents"]]; then
+            pr_body="This rules was deleted: 
+            $deleted_lints_file_contents"
+          elif if [[ -n "$new_lints_file_contents" && -z "$deleted_lints_file_contents"]]; then
+            pr_body="Please unselect, which new rules you wish to disable: 
+            $new_lints_file_contents"
+          elif if [[ -n "$new_lints_file_contents" && -n "$deleted_lints_file_contents"]]; then
+            pr_body="This rules was deleted: 
+            $deleted_lints_file_contents
+            
+            Please unselect, which new rules you wish to disable: 
+            $new_lints_file_contents"
+          else
+            pr_body="""
+          fi
           gh pr create \
           -B main \
           -H ${{ steps.vars.outputs.BRANCH_NAME }} \
