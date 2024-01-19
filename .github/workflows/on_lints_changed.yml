@@ -60,13 +60,16 @@ jobs:
         run: |
           new_lints_file_contents=$(cat new_lints.tmp)
           deleted_lints_file_contents=$(cat deleted_lints.tmp)
-          if [[ -z "$new_lints_file_contents" && -n "$deleted_lints_file_contents"]] then
+          if [[ -z "$new_lints_file_contents" && -n "$deleted_lints_file_contents" ]]
+          then
             pr_body="This rules was deleted: 
             $deleted_lints_file_contents"
-          elif if [[ -n "$new_lints_file_contents" && -z "$deleted_lints_file_contents"]] then
+          elif [[ -n "$new_lints_file_contents" && -z "$deleted_lints_file_contents" ]]
+          then
             pr_body="Please unselect, which new rules you wish to disable: 
             $new_lints_file_contents"
-          elif if [[ -n "$new_lints_file_contents" && -n "$deleted_lints_file_contents"]] then
+          elif [[ -n "$new_lints_file_contents" && -n "$deleted_lints_file_contents" ]]
+          then
             pr_body="This rules was deleted: 
             $deleted_lints_file_contents
             
