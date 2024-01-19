@@ -65,7 +65,6 @@ jobs:
           -H ${{ steps.vars.outputs.BRANCH_NAME }} \
           --title "${{ steps.vars.outputs.BRANCH_NAME }}" \
           --body "Please unselect, which new rules you wish to disable:
-            $new_lints_file_contents
-
+            $new_lints_file_contents \n
             This rules was deleted:
             $deleted_lints_file_contents"
