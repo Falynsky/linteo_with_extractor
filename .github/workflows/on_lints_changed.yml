@@ -63,5 +63,5 @@ jobs:
           -B main \
           -H ${{ steps.vars.outputs.BRANCH_NAME }} \
           --title "${{ steps.vars.outputs.BRANCH_NAME }}" \
-          --body "Please select, which new rules you wish to disable:
+          --body "Please unselect, which new rules you wish to disable:
             $file_contents"

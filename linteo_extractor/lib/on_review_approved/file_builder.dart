@@ -14,7 +14,7 @@ class FileBuilder {
     final currentFile = downloader.readLatestVersionedFile(version);
 
     final appender = RulesAppender(currentFile);
-    final rules = RulesParser.getSelectedRules(options.rawRules);
+    final rules = RulesParser.getUnselectedRules(options.rawRules);
 
     return appender.build(rules, options.pullRequestUrl);
   }

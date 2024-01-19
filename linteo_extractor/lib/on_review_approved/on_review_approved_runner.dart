@@ -39,7 +39,7 @@ class OnReviewApprovedRunner extends ActionRunner {
     required String pullRequestUrl,
     required String version,
   }) {
-    final hasAnySelectedTicks = RulesParser.containsSelectedRule(rawRules);
+    final hasAnySelectedTicks = RulesParser.containsUnselectedRule(rawRules);
 
     if (hasAnySelectedTicks) {
       final versionedFileWriter = VersionedFileWriter(

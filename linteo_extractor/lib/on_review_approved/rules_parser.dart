@@ -1,16 +1,16 @@
-const _selectedTick = '- [x]';
+const _unselectedTick = '- [ ]';
 
 class RulesParser {
-  static List<String> getSelectedRules(String input) {
+  static List<String> getUnselectedRules(String input) {
     final items = input.split('\n');
 
     return items
-        .where(containsSelectedRule)
-        .map((rule) => rule.replaceFirst('$_selectedTick ', '').trim())
+        .where(containsUnselectedRule)
+        .map((rule) => rule.replaceFirst('$_unselectedTick ', '').trim())
         .toList();
   }
 
-  static bool containsSelectedRule(String input) {
-    return input.contains(_selectedTick);
+  static bool containsUnselectedRule(String input) {
+    return input.contains(_unselectedTick);
   }
 }
