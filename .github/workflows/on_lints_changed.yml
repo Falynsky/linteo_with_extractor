@@ -38,7 +38,7 @@ jobs:
         id: check_output_existence
         uses: andstor/file-existence-action@v2
         with:
-          files: "new_lints.tmp"
+          files: "new_lints.tmp, deleted_lints.tmp"
 
       - name: Add lints to project
         if: steps.check_output_existence.outputs.files_exists == 'true'
@@ -58,10 +58,14 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          file_contents=$(cat new_lints.tmp)
+          new_lints_file_contents=$(cat new_lints.tmp)
+          deleted_lints_file_contents=$(cat deleted_lints.tmp)
           gh pr create \
           -B main \
           -H ${{ steps.vars.outputs.BRANCH_NAME }} \
           --title "${{ steps.vars.outputs.BRANCH_NAME }}" \
           --body "Please unselect, which new rules you wish to disable:
-            $file_contents"
+            $file_contents
+
+            This rules was deleted:
+            $deleted_lints_file_contents"

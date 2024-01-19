@@ -44,6 +44,17 @@ class LintsManager {
     }
   }
 
+    List<String> getDeletedLints() {
+    try {
+      final lints = List<String>.from(savedLints);
+      lints.removeWhere((lint) => fetchedLints.contains(lint));
+
+      return lints;
+    } catch (e) {
+      return [];
+    }
+  }
+
   bool haveLintsChanged() {
     final htmlHash = _htmlExtractor.getLintsHash();
     final yamlHash = _yamlExtractor.getLintsHash();

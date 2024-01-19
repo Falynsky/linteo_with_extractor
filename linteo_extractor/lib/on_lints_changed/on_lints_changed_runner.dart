@@ -34,15 +34,28 @@ class OnLintsChangedRunner extends ActionRunner {
 
   void _onLintsChanged() {
     final lints = manager.getNewLints();
+    final deletedLints = manager.getDeletedLints();
     manager.updateAllLintsFile();
-    _createTmpFile(lints);
+    _createNewLintsTmpFile(lints);
+    _createDeletedLintsTmpFile(deletedLints);
   }
 
-  void _createTmpFile(List<String> lints) {
+  void _createNewLintsTmpFile(List<String> lints) {
     final file = File('$workspace/new_lints.tmp');
     final buffer = StringBuffer();
     for (final lint in lints) {
       buffer.writeln('- [x] $lint');
+    }
+
+    final text = buffer.toString();
+    file.writeAsStringSync(text);
+  }
+
+    void _createDeletedLintsTmpFile(List<String> lints) {
+    final file = File('$workspace/deleted_lints.tmp');
+    final buffer = StringBuffer();
+    for (final lint in lints) {
+      buffer.writeln('- $lint');
     }
 
     final text = buffer.toString();
