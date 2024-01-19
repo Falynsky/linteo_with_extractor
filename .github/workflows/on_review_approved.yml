@@ -11,8 +11,15 @@ jobs:
     
     outputs:
       version: ${{ steps.complete_action.outputs.version }}
+      branch: ${{ steps.extract_branch.outputs.branch }}
       
     steps:
+
+      - name: Extract branch name
+        shell: bash
+        run: echo "branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}" >> $GITHUB_OUTPUT
+        id: extract_branch
+        s
       - name: "Log useful objects:"
         run: |
           echo "toJson(github.event.review):"
@@ -23,6 +30,9 @@ jobs:
 
           echo "github.event.pull_request.body:"
           echo "${{ github.event.pull_request.body }}"
+
+          echo "steps.extract_branch.outputs.branch"
+          echo "${{ steps.extract_branch.outputs.branch }}"
 
       - uses: actions/checkout@v4.1.1
       - uses: dart-lang/setup-dart@9a04e6d73cca37bd455e0608d7e5092f881fd603
