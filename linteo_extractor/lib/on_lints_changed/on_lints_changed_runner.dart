@@ -39,7 +39,6 @@ class OnLintsChangedRunner extends ActionRunner {
   }
 
   void _createTmpFile(List<String> lints) {
-    print(workspace);
     final file = File('$workspace/new_lints.tmp');
     final buffer = StringBuffer();
     for (final lint in lints) {
