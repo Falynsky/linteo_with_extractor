@@ -56,15 +56,10 @@ jobs:
           git merge "${{ github.event.pull_request.head.ref }}"
 
           git push origin main
-          git push origin -d "${{ github.event.pull_request.head.ref }}" --force
+          git push origin -d "${{ github.event.pull_request.head.ref }}"
 
       - name: Create & push tag
         id: push_tag
-        run: 
-          git config user.email "kamil.falinski@gmail.com"
-          git config user.name "Kamil Faliński"
-          
-          echo "steps.complete_action.outputs.version"
-          echo "${{ steps.complete_action.outputs.version }}"
+        run: |
           git tag ${{ steps.complete_action.outputs.version }}
-          git push origin ${{ steps.complete_action.outputs.version }} --force
+          git push origin ${{ steps.complete_action.outputs.version }}
