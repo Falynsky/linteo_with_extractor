@@ -17,7 +17,7 @@ class OnReviewApprovedRunner extends ActionRunner {
   @override
   void runAction() {
     final helper = VersionHelper(workspace);
-    final version = helper.getIncrementedVersion();
+    final String  version = helper.getIncrementedVersion();
 
     _tryUpdateVersionedFile(
       workspace: workspace,
