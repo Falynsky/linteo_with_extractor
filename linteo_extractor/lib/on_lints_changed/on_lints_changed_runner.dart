@@ -55,7 +55,7 @@ class OnLintsChangedRunner extends ActionRunner {
     final file = File('$workspace/deleted_lints.tmp');
     final buffer = StringBuffer();
     for (int i = 1; i <= lints.length; i ++) {
-      buffer.writeln('$i. ${lints[i]}');
+      buffer.writeln('$i. ${lints[i-1]}');
     }
 
     final text = buffer.toString();
