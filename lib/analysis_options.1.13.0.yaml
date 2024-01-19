@@ -33,33 +33,3 @@ analyzer:
 
 linter:
   rules:
-
-    # https://github.com/Falynsky/linteo_with_extractor/pull/45
-    avoid_catches_without_on_clauses: false
-
-    # https://github.com/Falynsky/linteo_with_extractor/pull/45
-    use_raw_strings: false
-
-    # https://github.com/Falynsky/linteo_with_extractor/pull/45
-    void_checks: false
-
-    # https://github.com/Falynsky/linteo_with_extractor/pull/46
-    unnecessary_breaks: false
-
-    # https://github.com/Falynsky/linteo_with_extractor/pull/52
-    unnecessary_raw_strings: false
-
-    # https://github.com/Falynsky/linteo_with_extractor/pull/52
-    use_super_parameters: false
-
-    # https://github.com/Falynsky/linteo_with_extractor/pull/52
-    use_test_throws_matchers: false
-
-    # https://github.com/Falynsky/linteo_with_extractor/pull/52
-    use_to_and_as_if_applicable: false
-
-    # https://github.com/Falynsky/linteo_with_extractor/pull/52
-    valid_regexps: false
-
-    # https://github.com/Falynsky/linteo_with_extractor/pull/52
-    void_checks: false
