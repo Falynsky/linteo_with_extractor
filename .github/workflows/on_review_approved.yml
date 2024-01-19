@@ -38,7 +38,9 @@ jobs:
           git config user.name "Kamil Faliński"
 
           LOCAL_VERSION=$(dart run linteo_extractor/bin/on_review_approved.dart ${{ github.workspace }} "${{ github.event.pull_request.body }}" "${{ github.event.pull_request.html_url }}")
-          echo "version=$LOCAL_VERSION" >> $GITHUB_OUTPUT
+          echo "Branch ID: $LOCAL_VERSION"
+          TEST=1.4.0
+          echo "version=$TEST" >> $GITHUB_OUTPUT
 
           rm -rf new_lints.tmp
           git checkout -b ${{ github.event.pull_request.head.ref }}
@@ -60,6 +62,8 @@ jobs:
 
       - name: Create & push tag
         id: push_tag
-        run: |
+        run: 
+          echo "steps.complete_action.outputs.version"
+          echo "${{ steps.complete_action.outputs.version }}"
           git tag ${{ steps.complete_action.outputs.version }}
           git push origin ${{ steps.complete_action.outputs.version }}
