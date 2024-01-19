@@ -71,6 +71,26 @@ void main() {
     expect(result, expected);
   });
 
+  test('Should return list of deleted rules', () async {
+    final expected = [
+      'valid_regexps',
+      'void_checks',
+    ];
+
+    final htmlInput = fixture('modified_options_response.html');
+    when(() => downloader.downloadRulesFromDartLang()).thenAnswer(
+      (_) => Future<String>.value(htmlInput),
+    );
+
+    manager = await LintsManager.create(
+      downloader: downloader,
+      workspace: '..',
+    );
+
+    final result = manager.getDeletedLints();
+    expect(result, expected);
+  });
+
   test('Should return empty list of new rules', () async {
     final htmlInput = fixture('options_response.html');
     when(() => downloader.downloadRulesFromDartLang()).thenAnswer(
