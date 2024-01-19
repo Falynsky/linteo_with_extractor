@@ -60,6 +60,8 @@ jobs:
 
       - name: Create & push tag
         id: push_tag
-        run: |
+        run: 
+          echo "steps.complete_action.outputs.version"
+          echo "${{ steps.complete_action.outputs.version }}"
           git tag ${{ steps.complete_action.outputs.version }}
           git push origin ${{ steps.complete_action.outputs.version }}
