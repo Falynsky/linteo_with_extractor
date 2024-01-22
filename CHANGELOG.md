@@ -1,3 +1,15 @@
+##1.5.0
+
+  * Add `avoid_annotating_with_dynamic` new rule
+  * Add `avoid_catches_without_on_clauses` new rule
+  * Add `avoid_catching_errors` new rule
+  * Add `avoid_double_and_int_checks` new rule
+  * Add `avoid_dynamic_calls` new rule
+  * Add `avoid_empty_else` new rule
+  * `avoid_bool_literals_in_conditional_expressions: false`
+  * `avoid_classes_with_only_static_members: false`
+  * Remove `fake_test_1` due to the removal of the rule from all linter rules
+
 ## 1.3.0
 
 * Add `annotate_redeclares` new experimental rule
