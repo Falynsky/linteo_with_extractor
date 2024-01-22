@@ -10,6 +10,14 @@ void main() {
     expect(result, expected);
   });
 
+  test('Should return list of deleted rules', () {
+    const input = 'Test:\n\n1. fake_rule_1\n2. fake_rule_2\n3. fake_rule_3\n\nTest2:\n\n- [ ] dsaas';
+    const expected = ['fake_rule_1', 'fake_rule_2', 'fake_rule_3'];
+    final result = RulesParser.getDeletedRules(input);
+
+    expect(result, expected);
+  });
+
   test('Should return list of unselected rules (1st, 3rd rules)', () {
     const input = '- [ ] fake_rule_1\n- [x] fake_rule_2\n- [ ] fake_rule_3';
     const expected = ['fake_rule_1', 'fake_rule_3'];
