@@ -6,7 +6,7 @@ on:
 
 # on:
 #   schedule:
-#     - cron:  '0 6 * * *'
+#     - cron:  '30 7 * * 1'
 
 jobs:
   create_pull_request:
@@ -60,12 +60,23 @@ jobs:
         run: |
           new_lints_file_contents=$(cat new_lints.tmp)
           deleted_lints_file_contents=$(cat deleted_lints.tmp)
+          if [[ -z "$new_lints_file_contents" && -n "$deleted_lints_file_contents" ]]; then
+            pr_body="This rules was deleted: 
+            $deleted_lints_file_contents"
+          elif [[ -n "$new_lints_file_contents" && -z "$deleted_lints_file_contents" ]]; then
+            pr_body="Please unselect, which new rules you wish to disable: 
+            $new_lints_file_contents"
+          elif [[ -n "$new_lints_file_contents" && -n "$deleted_lints_file_contents" ]]; then
+            pr_body="This rules was deleted: 
+            $deleted_lints_file_contents
+            
+            Please unselect, which new rules you wish to disable: 
+            $new_lints_file_contents"
+          else
+            pr_body="Nothing changed in lints"
+          fi
           gh pr create \
           -B main \
           -H ${{ steps.vars.outputs.BRANCH_NAME }} \
           --title "${{ steps.vars.outputs.BRANCH_NAME }}" \
-          --body "Please unselect, which new rules you wish to disable:
-            $file_contents
-
-            This rules was deleted:
-            $deleted_lints_file_contents"
+          --body "$pr_body"
