@@ -7,7 +7,6 @@ linter:
     - always_specify_types
     - always_use_package_imports
     - annotate_overrides
-    - annotate_redeclares
     - avoid_annotating_with_dynamic
     - avoid_bool_literals_in_conditional_expressions
     - avoid_catches_without_on_clauses
@@ -77,6 +76,7 @@ linter:
     - eol_at_end_of_file
     - exhaustive_cases
     - file_names
+    - test_test_test_fake
     - flutter_style_todos
     - hash_and_equals
     - implementation_imports
