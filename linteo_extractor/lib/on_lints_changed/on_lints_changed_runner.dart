@@ -1,8 +1,7 @@
-import 'dart:io';
-
 import 'package:linteo_extractor/action_runner.dart';
-// import 'package:linteo_extractor/on_lints_changed/faker.dart';
 import 'package:linteo_extractor/on_lints_changed/lints_manager.dart';
+import 'package:linteo_extractor/on_lints_changed/tmp_file_writter/deleted_lints_tmp_writter.dart';
+import 'package:linteo_extractor/on_lints_changed/tmp_file_writter/new_lints_tmp_writter.dart';
 
 class OnLintsChangedRunner extends ActionRunner {
   OnLintsChangedRunner._({
@@ -26,10 +25,7 @@ class OnLintsChangedRunner extends ActionRunner {
     final haveLintsChanged = manager.haveLintsChanged();
     if (haveLintsChanged) {
       _onLintsChanged();
-    } /* else {
-      // Only for testing purposes
-       Faker.fake(manager, workspace, _createTmpFile);
-    } */
+    }
   }
 
   void _onLintsChanged() {
@@ -41,24 +37,12 @@ class OnLintsChangedRunner extends ActionRunner {
   }
 
   void _createNewLintsTmpFile(List<String> lints) {
-    final file = File('$workspace/new_lints.tmp');
-    final buffer = StringBuffer();
-    for (final lint in lints) {
-      buffer.writeln('- [x] $lint');
-    }
-
-    final text = buffer.toString();
-    file.writeAsStringSync(text);
+    final newLintTmpWritter = NewLintTmpWritter('$workspace/new_lints.tmp', lints);
+    newLintTmpWritter.createTmpFile();
   }
 
   void _createDeletedLintsTmpFile(List<String> lints) {
-    final file = File('$workspace/deleted_lints.tmp');
-    final buffer = StringBuffer();
-    for (int i = 1; i <= lints.length; i ++) {
-      buffer.writeln('$i. ${lints[i-1]}');
-    }
-
-    final text = buffer.toString();
-    file.writeAsStringSync(text);
+    final deletedLintsTmpWritter = DeletedLintsTmpWritter('$workspace/deleted_lints.tmp', lints);
+    deletedLintsTmpWritter.createTmpFile();
   }
 }

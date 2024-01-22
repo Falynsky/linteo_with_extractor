@@ -1,16 +1,11 @@
 const _unselectedTick = '- [ ]';
 
 class RulesParser {
-  static List<String> getUnselectedRules(String input) {
-    final items = input.split('\n');
+  static List<String> getUnselectedRules(String input) => input
+      .split('\n')
+      .where(containsUnselectedRule)
+      .map((rule) => rule.replaceFirst('$_unselectedTick ', '').trim())
+      .toList();
 
-    return items
-        .where(containsUnselectedRule)
-        .map((rule) => rule.replaceFirst('$_unselectedTick ', '').trim())
-        .toList();
-  }
-
-  static bool containsUnselectedRule(String input) {
-    return input.contains(_unselectedTick);
-  }
+  static bool containsUnselectedRule(String input) => input.contains(_unselectedTick);
 }

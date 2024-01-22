@@ -1,4 +1,4 @@
-import 'package:linteo_extractor/on_lints_changed/rules_extractor.dart';
+import 'package:linteo_extractor/on_lints_changed/rules_extractor/rules_extractor.dart';
 
 class HtmlExtractor extends RulesExtractor {
   HtmlExtractor(super.input);

@@ -14,6 +14,7 @@ class RulesAppender {
     }
 
     final value = buffer.toString();
+
     return value.trim();
   }
 }
