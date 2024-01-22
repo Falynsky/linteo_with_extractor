@@ -15,8 +15,8 @@ class ChangelogUpdater {
     final newRules = RulesParser.getSelectedRules(rawRules);
     final disablesRules = RulesParser.getUnselectedRules(rawRules);
     final deletedRules = RulesParser.getDeletedRules(rawRules);
-    final buffer = StringBuffer();
 
+    final buffer = StringBuffer();
     buffer.writeln('## $version');
     buffer.writeln();
 
@@ -33,9 +33,8 @@ class ChangelogUpdater {
     buffer.writeln();
     buffer.writeln(changelogText);
 
-    final stringified = buffer.toString();
-    final trimmed = stringified.trim();
-
-    file.writeAsStringSync(trimmed);
+    final stringifiedChangelog = buffer.toString();
+    final trimmedChangelog = stringifiedChangelog.trim();
+    file.writeAsStringSync(trimmedChangelog);
   }
 }

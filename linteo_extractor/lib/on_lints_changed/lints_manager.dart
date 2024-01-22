@@ -44,7 +44,7 @@ class LintsManager {
     }
   }
 
-    List<String> getDeletedLints() {
+  List<String> getDeletedLints() {
     try {
       final lints = List<String>.from(savedLints);
       lints.removeWhere((lint) => fetchedLints.contains(lint));
@@ -65,18 +65,6 @@ class LintsManager {
   void updateAllLintsFile() {
     final file = File('$_workspace/lib/all_lint_rules.yaml');
     final newLints = _htmlExtractor.getRawBody();
-
-    file.writeAsStringSync(newLints);
-  }
-
-  void updateAllLintsFileWithFakes(List<String> fakeLints) {
-    final file = File('$_workspace/lib/all_lint_rules.yaml');
-
-    var newLints = _htmlExtractor.getRawBody();
-    for (final fakeLint in fakeLints) {
-      // ignore: use_string_buffers
-      newLints += '    - $fakeLint\n';
-    }
 
     file.writeAsStringSync(newLints);
   }

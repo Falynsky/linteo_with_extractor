@@ -1,5 +1,3 @@
-import 'package:collection/collection.dart';
-
 const _unselectedTick = '- [ ]';
 const _selectedTick = '- [x]';
 final _deletedLinkMark = RegExp(r'\d+\.');
@@ -27,5 +25,6 @@ class RulesParser {
   static bool containsDeletedRule(String input) => _deletedLinkMark.hasMatch(input);
 
   static bool containsUnselectedRule(String input) => input.contains(_unselectedTick);
+
   static bool containsSelectedRule(String input) => input.contains(_selectedTick);
 }

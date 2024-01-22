@@ -1,5 +1,5 @@
 import 'package:http/http.dart' as http;
-import 'package:linteo_extractor/utils/file_reader.dart';
+import 'package:linteo_extractor/file_reader.dart';
 import 'package:linteo_extractor/version_helper.dart';
 
 const _allLintsUrl = 'https://dart.dev/tools/linter-rules/all';

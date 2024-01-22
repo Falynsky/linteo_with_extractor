@@ -1,4 +1,4 @@
-import 'package:linteo_extractor/utils/file_reader.dart';
+import 'package:linteo_extractor/file_reader.dart';
 import 'package:yaml/yaml.dart';
 
 class VersionHelper {
