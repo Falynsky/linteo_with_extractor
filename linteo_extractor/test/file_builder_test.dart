@@ -11,7 +11,7 @@ void main() {
 
     const options = FileBuilderOptions(
       pullRequestUrl: pullRequestUrl,
-      rawRules: 'Some PR text:\n- [x] $rule1\n- [ ] $rule2\n- [x] $rule3',
+      rawRules: 'Some PR text:\n- [ ] $rule1\n- [x] $rule2\n- [ ] $rule3',
     );
 
     const builder = FileBuilder(options, '..');

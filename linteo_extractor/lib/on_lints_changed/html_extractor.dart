@@ -15,7 +15,6 @@ class HtmlExtractor extends RulesExtractor {
     const startCodeTag = '<code class="yaml prettyprint lang-yaml">';
     const endCodeTag = '</code></pre></div>';
 
-    print(input);
     final startIndex = input.indexOf(startCodeTag) + startCodeTag.length;
     final endIndex = input.indexOf(endCodeTag);
 
