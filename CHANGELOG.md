@@ -1,3 +1,8 @@
+## 1.6.0
+
+  * Add `avoid_renaming_method_parameters` new rule
+  * Remove `fake_test_1` due to the removal of the rule from all linter rules
+
 ##1.5.0
 
   * Add `avoid_annotating_with_dynamic` new rule
