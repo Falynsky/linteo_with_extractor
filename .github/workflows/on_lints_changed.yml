@@ -73,7 +73,7 @@ jobs:
             Please unselect, which new rules you wish to disable: 
             $new_lints_file_contents"
           else
-            pr_body="""
+            pr_body=""
           fi
           gh pr create \
           -B main \
