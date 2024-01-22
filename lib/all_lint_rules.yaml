@@ -165,6 +165,7 @@ linter:
     - sized_box_shrink_expand
     - slash_for_doc_comments
     - sort_child_properties_last
+    - fake_lint_2
     - sort_constructors_first
     - sort_pub_dependencies
     - sort_unnamed_constructors_first
