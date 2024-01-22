@@ -1,7 +1,7 @@
 import 'dart:io';
 
-import 'package:linteo_extractor/on_lints_changed/html_extractor.dart';
-import 'package:linteo_extractor/on_lints_changed/yaml_extractor.dart';
+import 'package:linteo_extractor/on_lints_changed/rules_extractor/html_extractor.dart';
+import 'package:linteo_extractor/on_lints_changed/rules_extractor/yaml_extractor.dart';
 import 'package:linteo_extractor/rules_downloader.dart';
 
 class LintsManager {

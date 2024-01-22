@@ -1,5 +1,4 @@
-import 'dart:io';
-
+import 'package:linteo_extractor/utils/file_reader.dart';
 import 'package:yaml/yaml.dart';
 
 class VersionHelper {
@@ -10,10 +9,7 @@ class VersionHelper {
   String getAnalysisOptionsVersion([String? analysisOptions]) {
     final text = analysisOptions ?? _getAnalysisOptionsFromFile();
 
-    return text
-        .trim()
-        .replaceFirst('include: package:linteo/analysis_options.', '')
-        .replaceFirst('.yaml', '');
+    return text.trim().replaceFirst('include: package:linteo/analysis_options.', '').replaceFirst('.yaml', '');
   }
 
   String getIncrementedVersion([String? pubspec]) {
@@ -27,19 +23,9 @@ class VersionHelper {
     return parts.join('.');
   }
 
-  String _getAnalysisOptionsFromFile() {
-    final path = '$workspace/lib/analysis_options.yaml';
-    final file = File(path);
+  String _getAnalysisOptionsFromFile() => FileReader.getFileContent('$workspace/lib/analysis_options.yaml');
 
-    return file.readAsStringSync();
-  }
-
-  String _getPubspecFromFile() {
-    final path = '$workspace/pubspec.yaml';
-    final file = File(path);
-
-    return file.readAsStringSync();
-  }
+  String _getPubspecFromFile() => FileReader.getFileContent('$workspace/pubspec.yaml');
 
   String _incrementString(String numberText) {
     var minor = int.parse(numberText);
