@@ -1,3 +1,8 @@
+## 1.5.0
+
+  * Disable `eol_at_end_of_file` rule
+  * Remove `fake_test_lint` due to the removal of the rule from all linter rules
+
 ## 1.3.0
 
 * Add `annotate_redeclares` new experimental rule
