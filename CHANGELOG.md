@@ -1,3 +1,8 @@
+## 1.5.0
+
+  * `annotate_redeclares: false`
+  * Remove `test_test_test_fake` due to the removal of the rule from all linter rules
+
 ## 1.3.0
 
 * Add `annotate_redeclares` new experimental rule
