@@ -1,3 +1,8 @@
+##1.5.0
+
+  * Add `avoid_final_parameters` new rule
+  * `- [ ] avoid_final_parameters: false`
+
 ## 1.3.0
 
 * Add `annotate_redeclares` new experimental rule
