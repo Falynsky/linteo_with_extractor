@@ -1,3 +1,9 @@
+## 1.6.0
+
+  * Add `prefer_const_constructors_in_immutables` new rule
+  * Disable `prefer_const_constructors` rule
+  * Remove `test_fake_rule` due to the removal of the rule from all linter rules
+
 ## 1.5.0
 
   * Disable `eol_at_end_of_file` rule
