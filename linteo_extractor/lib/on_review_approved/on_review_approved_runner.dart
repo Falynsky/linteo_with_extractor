@@ -1,4 +1,5 @@
 import 'package:linteo_extractor/action_runner.dart';
+import 'package:linteo_extractor/on_review_approved/changelog_updater.dart';
 import 'package:linteo_extractor/on_review_approved/pubspec_writer.dart';
 import 'package:linteo_extractor/on_review_approved/rules_parser.dart';
 import 'package:linteo_extractor/on_review_approved/versioned_file_writer.dart';
@@ -29,6 +30,9 @@ class OnReviewApprovedRunner extends ActionRunner {
     final pubspecWriter = PubspecWriter(workspace);
     pubspecWriter.write(version);
 
+    final changelogUpdater = ChangelogUpdater(workspace, rawRules);
+    changelogUpdater.update(version);
+
     // ignore: avoid_print
     print(version);
   }
@@ -39,9 +43,9 @@ class OnReviewApprovedRunner extends ActionRunner {
     required String pullRequestUrl,
     required String version,
   }) {
-    final hasAnySelectedTicks = RulesParser.containsUnselectedRule(rawRules);
+    final hasAnyUnselectedTicks = RulesParser.containsUnselectedRule(rawRules);
 
-    if (hasAnySelectedTicks) {
+    if (hasAnyUnselectedTicks) {
       final versionedFileWriter = VersionedFileWriter(
         workspace: workspace,
         rawRules: rawRules,
