@@ -6,6 +6,7 @@ linter:
     - always_require_non_null_named_parameters
     - always_specify_types
     - always_use_package_imports
+    - annotate_overrides
     - annotate_redeclares
     - avoid_annotating_with_dynamic
     - avoid_bool_literals_in_conditional_expressions
@@ -19,7 +20,6 @@ linter:
     - avoid_escaping_inner_quotes
     - avoid_field_initializers_in_const_classes
     - avoid_final_parameters
-    - fake_lint_3
     - avoid_function_literals_in_foreach_calls
     - avoid_implementing_value_types
     - avoid_init_to_null
@@ -165,7 +165,6 @@ linter:
     - sized_box_shrink_expand
     - slash_for_doc_comments
     - sort_child_properties_last
-    - fake_lint_2
     - sort_constructors_first
     - sort_pub_dependencies
     - sort_unnamed_constructors_first
