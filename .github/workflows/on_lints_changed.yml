@@ -1,12 +1,8 @@
 name: On Lints Changed
 
 on:
-  push:
-    branches: ["main"]
-
-# on:
-#   schedule:
-#     - cron:  '30 7 * * 1'
+  schedule:
+    - cron:  '0 9 * * 1'
 
 jobs:
   create_pull_request:
