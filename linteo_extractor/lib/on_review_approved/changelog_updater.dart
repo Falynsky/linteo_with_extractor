@@ -15,10 +15,11 @@ class ChangelogUpdater {
     final newRules = RulesParser.getSelectedRules(rawRules);
     final disablesRules = RulesParser.getUnselectedRules(rawRules);
     final deletedRules = RulesParser.getDeletedRules(rawRules);
-
     final buffer = StringBuffer();
-    buffer.writeln('##$version');
+
+    buffer.writeln('## $version');
     buffer.writeln();
+
     for (final rule in newRules) {
       buffer.writeln('  * Add `$rule` new rule');
     }
@@ -28,10 +29,13 @@ class ChangelogUpdater {
     for (final rule in deletedRules) {
       buffer.writeln('  * Remove `$rule` due to the removal of the rule from all linter rules');
     }
+
     buffer.writeln();
     buffer.writeln(changelogText);
-    final stringified = buffer.toString();
 
-    file.writeAsStringSync(stringified.trim());
+    final stringified = buffer.toString();
+    final trimmed = stringified.trim();
+
+    file.writeAsStringSync(trimmed);
   }
 }
