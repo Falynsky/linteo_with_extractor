@@ -44,6 +44,9 @@ jobs:
           dart pub get
           cd ..
 
+          git config user.email ""
+          git config user.name "iteo-bot"
+
           LOCAL_VERSION=$(dart run linteo_extractor/bin/on_review_approved.dart ${{ github.workspace }} "${{ github.event.pull_request.body }}" "${{ github.event.pull_request.html_url }}")
           echo "version=$LOCAL_VERSION" >> $GITHUB_OUTPUT
 

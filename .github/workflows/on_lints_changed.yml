@@ -39,6 +39,8 @@ jobs:
       - name: Add lints to project
         if: steps.check_output_existence.outputs.files_exists == 'true'
         run: |
+          git config user.email ""
+          git config user.name "iteo-bot"
           git status
 
           git checkout -b "${{ steps.vars.outputs.BRANCH_NAME }}"
