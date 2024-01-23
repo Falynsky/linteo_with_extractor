@@ -1,0 +1,31 @@
+name: Run Tests and Notify
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+      - uses: dart-lang/setup-dart@b64355ae6ca0b5d484f0106a033dd1388965d06d
+      - name: Install dependencies
+        run: dart pub get
+      - name: Run Tests
+        id: test
+        run: |
+            dart test
+  notify-slack:
+    needs: test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Send Slack Notification
+        uses: Ilshidur/action-slack@v4
+        with:
+          args: 'Your tests passed! Subscribe to pull requests.'
+          channel_id: 'C06F4DH84EP'
+          status: 'success'
