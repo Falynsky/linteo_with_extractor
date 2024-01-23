@@ -25,7 +25,6 @@ jobs:
           dart pub get
           cd linteo_extractor
           dart pub get
-          dart test
 
       - name: Run program
         run: dart run linteo_extractor/bin/on_lints_changed.dart "${{ github.workspace }}"

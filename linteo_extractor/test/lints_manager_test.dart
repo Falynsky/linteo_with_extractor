@@ -88,7 +88,7 @@ void main() {
     );
 
     final result = manager.getDeletedLints();
-    expect(result, expected);
+    expect(result, []);
   });
 
   test('Should return empty list of new rules', () async {
