@@ -1,8 +1,13 @@
 name: Run Tests and Notify
 
 on:
+  push:
+    branches:
+        - 'feature/*'
+        - main
   pull_request:
-    types: [opened, synchronize, reopened, ready_for_review]
+    branches:
+        - 'feature/*'
 
 jobs:
   test:
