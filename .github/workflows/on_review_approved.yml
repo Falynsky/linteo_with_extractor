@@ -6,6 +6,8 @@ on:
 
 jobs:
   on_pull_request_approve:
+    permissions:
+      id-token: write # This is required for requesting the JWT
     if: github.event.review.state == 'approved'
     runs-on: ubuntu-latest
     
