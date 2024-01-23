@@ -1,3 +1,7 @@
+## 1.7.0
+
+  * Remove `fake_test_2` due to the removal of the rule from all linter rules
+
 ## 1.6.0
 
   * Add `prefer_const_constructors_in_immutables` new rule
