@@ -35,6 +35,15 @@ jobs:
             labels: [label]
             });
 
+          const body = 'Thank you for your pull request!'; // Your comment here
+  
+          github.rest.issues.createComment({
+            owner,
+            repo,
+            issue_number: prNumber,
+            body
+          });
+
     - name: Add failure label if tests fail
       if: failure()
       uses: actions/github-script@v3
@@ -52,3 +61,12 @@ jobs:
             issue_number: prNumber,
             labels: [label]
             });
+            
+          const body = 'Thank you for your pull request!'; // Your comment here
+       
+          github.rest.issues.createComment({
+            owner,
+            repo,
+            issue_number: prNumber,
+            body
+          });
