@@ -11,6 +11,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: print important
+        run: echo "${{ github.event.pull_request.labels.*.name}}"
       - name: Send custom JSON data to Slack workflow
         id: slack
         if: contains(github.event.pull_request.labels.*.name, 'test-succeded')
