@@ -88,21 +88,6 @@ jobs:
       id: slack
       uses: slackapi/slack-github-action@v1.23.0
       with:
-        channel-id: 'C06F4DH84EP'
-        slack-message: |
-          {
-            "text": "A new pull request has been created.",
-            "attachments": [
-              {
-                "fallback": "Pull Request Details",
-                "title": "PR: test",
-                "title_link": "${{ github.event.pull_request.html_url }}",
-                "text": "Click the link to view the pull request.",
-                "color": "#36a64f"
-              }
-            ]
-          }
-
+        payload: '{"text": "New push to the repository!"}'  
       env:
         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-        SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
