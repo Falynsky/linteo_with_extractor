@@ -88,10 +88,20 @@ jobs:
       id: slack
       uses: slackapi/slack-github-action@v1.23.0
       with:
+        channel-id: 'C06F4DH84EP'
         payload: |
           {
-            "pr_name": "${{ github.event.pull_request.title }}",
-            "pr_link": "${{ github.event.pull_request.html_url }}"
+            "text": "GitHub Action failed",
+            "blocks": [
+              {
+                "type": "section",
+                "text": {
+                  "type": "mrkdwn",
+                  "text": "*Production deployment check failed* :fire_engine:\n High error rate detected after deployment! Rolling back..."
+                }
+              }
+            }
           }
       env:
         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
