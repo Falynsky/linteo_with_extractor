@@ -1,9 +1,11 @@
 name: Dart Pull Request Tests
 
 on:
-  pull_request:
-    types: [opened, synchronize, reopened]
-    
+    workflow_run:
+      workflows: ["On Lints Changed"]
+      types:
+        - completed
+
 jobs:
    run_tests:
     runs-on: ubuntu-latest
