@@ -1,10 +1,8 @@
 name: Dart Pull Request Tests
 
 on:
-    workflow_run:
-      workflows: ["On Lints Changed"]
-      types:
-        - completed
+    pull_request:
+      types: [opened, synchronize, reopened]
 
 jobs:
    run_tests:
@@ -18,3 +16,39 @@ jobs:
         dart pub get
         cd linteo_extractor
         dart pub get
+        dart test
+    - name: Add success label
+      if: success()
+      uses: actions/github-script@v3
+      with:
+        github-token: ${{secrets.GITHUB_TOKEN}}
+        script: |
+          const prNumber = context.payload.pull_request.number;
+          const owner = context.repo.owner;
+          const repo = context.repo.repo;
+          const label = "test-succeded";  // Change to your desired label
+          
+          github.issues.addLabels({
+            owner: owner,
+            repo: repo,
+            issue_number: prNumber,
+            labels: [label]
+            });
+
+    - name: Add failure label if tests fail
+      if: failure()
+      uses: actions/github-script@v3
+      with:
+        github-token: ${{secrets.GITHUB_TOKEN}}
+        script: |
+          const prNumber = context.payload.pull_request.number;
+          const owner = context.repo.owner;
+          const repo = context.repo.repo;
+          const label = "test-failed";  // Change to your desired label
+          
+          github.issues.addLabels({
+            owner: owner,
+            repo: repo,
+            issue_number: prNumber,
+            labels: [label]
+            });
