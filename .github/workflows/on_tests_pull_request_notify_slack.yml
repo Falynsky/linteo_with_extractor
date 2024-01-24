@@ -32,8 +32,7 @@ jobs:
         uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_CHANNEL: hybrid-opensource-github-test
-          SLACK_COLOR: '#FF2D00'  # Customize the message color
-          SLACK_MESSAGE: 'A new pull request has been ${{ github.event.action }}: ${{ github.event.pull_request.title }}'
+          SLACK_COLOR: '#FF5500'  # Customize the message color
           SLACK_TITLE: 'Pull Request Notification'
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}  # Your Slack webhook URL
       - name: Send custom JSON data to Slack workflow
