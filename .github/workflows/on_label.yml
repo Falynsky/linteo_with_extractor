@@ -1,8 +1,10 @@
 name: on pull_request_target Send Slack Notifications
 
 on:
-  pull_request_target:
-    types: [labeled]
+  workflow_run:
+    workflows: ["Dart Pull Request Tests"]
+    types:
+      - completed
 
 jobs:
   build:
@@ -11,6 +13,7 @@ jobs:
     steps:
       - name: Send custom JSON data to Slack workflow
         id: slack
+        if: contains(github.event.pull_request.labels.*.name, 'test-succeded')
         uses: slackapi/slack-github-action@v1.23.0
         with:
           payload: |
