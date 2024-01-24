@@ -27,7 +27,12 @@ jobs:
           const owner = context.repo.owner;
           const repo = context.repo.repo;
           const label = "test-succeded";  // Change to your desired label
-          
+          github.issues.removeLabel({
+            owner: owner,
+            repo: repo,
+            issue_number: prNumber,
+            name: "test-failed"
+            });
           github.issues.addLabels({
             owner: owner,
             repo: repo,
@@ -37,13 +42,8 @@ jobs:
 
           const body = 'Thank you for your pull request!'; // Your comment here
   
-          github.issues.removeLabel({
-            owner: owner,
-            repo: repo,
-            issue_number: prNumber,
-            name: "test-failed"
-            });
-            
+
+
           github.issues.createComment({
             owner: owner,
             repo: repo,
@@ -62,6 +62,13 @@ jobs:
           const repo = context.repo.repo;
           const label = "test-failed";  // Change to your desired label
           
+          github.issues.removeLabel({
+            owner: owner,
+            repo: repo,
+            issue_number: prNumber,
+            name: "test-succeded"
+            });
+
           github.issues.addLabels({
             owner: owner,
             repo: repo,
@@ -69,12 +76,6 @@ jobs:
             labels: [label]
             });
 
-            github.issues.removeLabel({
-              owner: owner,
-              repo: repo,
-              issue_number: prNumber,
-              name: "test-succeded"
-              });
           const body = 'Thank you for your pull request!'; // Your comment here
        
           github.issues.createComment({
