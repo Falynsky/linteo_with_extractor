@@ -37,7 +37,7 @@ jobs:
 
           const body = 'Thank you for your pull request!'; // Your comment here
   
-          github.rest.issues.createComment({
+          github.issues.createComment({
             owner: owner,
             repo: repo,
             issue_number: prNumber,
@@ -64,7 +64,7 @@ jobs:
 
           const body = 'Thank you for your pull request!'; // Your comment here
        
-          github.rest.issues.createComment({
+          github.issues.createComment({
             owner: owner,
             repo: repo,
             issue_number: prNumber,
