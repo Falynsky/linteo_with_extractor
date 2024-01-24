@@ -55,7 +55,7 @@ void main() {
       final htmlHash = htmlExtractor.getLintsHash();
       final yamlHash = yamlExtractor.getLintsHash();
       
-      expect(htmlHash, 3321);
+      expect(htmlHash, yamlHash);
     });
   });
 }
