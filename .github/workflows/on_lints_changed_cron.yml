@@ -1,4 +1,4 @@
-name: On Lints Changed
+name: On Lints Changed cron
 
 on:
   schedule:
