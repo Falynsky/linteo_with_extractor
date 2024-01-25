@@ -1,13 +1,9 @@
-name: Run Tests and Notify
+name: Run Tests and Notify on main
 
 on:
-#   push:
-#     branches:
-#         - 'feature/*'
-#         - main
-  pull_request:
-    types:
-        - ready_for_review
+  push:
+    branches:
+        - main
 
 jobs:
   test:
