@@ -1,0 +1,18 @@
+name: on pull_request_target Send Slack Notifications
+
+on:
+  workflow_run:
+    workflows: ["Dart Pull Request Tests"]
+    types:
+      - completed
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Print all label names
+        run: |
+          for label in ${{ toJson(github.event.pull_request.labels.*.name) }}; do
+            echo $label
+          done
