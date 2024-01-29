@@ -29,8 +29,8 @@ body:
     id: alternatives_considered
     attributes:
       label: Alternatives Considered
-      description: "A clear and concise description of any alternative solutions or features you've considered."
-      placeholder: "I considered..."
+      description: "A clear and concise description of any alternative possible approaches."
+      placeholder: "I tried..."
   - type: dropdown
     id: platform
     attributes:
