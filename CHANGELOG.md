@@ -1,3 +1,9 @@
+## 1.8.0
+
+  * Remove `fake_test` due to the removal of the rule from all linter rules
+  * Remove `test` due to the removal of the rule from all linter rules
+  * Remove `testdsadas` due to the removal of the rule from all linter rules
+
 ## 1.7.0
 
   * Remove `fake_test_2` due to the removal of the rule from all linter rules
