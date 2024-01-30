@@ -62,11 +62,7 @@ jobs:
           git reset --soft HEAD~2 && git commit -m "Update analysis_options.yaml"
           git push origin "${{ github.event.pull_request.head.ref }}" --force
           
-          git checkout -b main
-          git merge "${{ github.event.pull_request.head.ref }}"
-
-          git push origin main
-          git push origin -d "${{ github.event.pull_request.head.ref }}"
+          gh pr merge "${{ github.event.pull_request.head.ref }}" --rebase
 
       - name: Create & push tag
         id: push_tag
