@@ -63,7 +63,9 @@ jobs:
           git push origin "${{ github.event.pull_request.head.ref }}" --force
           
           gh pr merge "${{ github.event.pull_request.head.ref }}" --rebase
-
+        env:
+          GH_TOKEN: ${{ github.token }}
+          
       - name: Create & push tag
         id: push_tag
         run: |
