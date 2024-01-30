@@ -1,7 +1,7 @@
 name: Feature Request Report
 description: File a feature request report
 title: "[Feature]: "
-labels: ["enhancement"]
+labels: []
 projects: []
 assignees: []
 body:
